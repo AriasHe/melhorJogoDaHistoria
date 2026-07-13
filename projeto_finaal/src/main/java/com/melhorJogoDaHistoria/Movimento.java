@@ -25,8 +25,11 @@ public class Movimento implements KeyListener {
             System.out.print(getcory() + " ");
             System.out.println(getcorx());
             System.out.println(mapTileNum[getcorx()][getcory()]);
-            seta_cima = true;
-            posicaoY -= velocidade;
+            if(!(tile[mapTileNum[getcorx()][getcory()]].colisao)){
+               seta_cima = true;
+               posicaoY -= velocidade;
+            }
+            
             
             
            
@@ -35,9 +38,10 @@ public class Movimento implements KeyListener {
             System.out.print(getcory() + " ");
             System.out.println(getcorx());
             System.out.println(mapTileNum[getcorx()+1][getcory()+1]);
-            seta_direita = true;
-            posicaoX += velocidade;
-           
+            if(!(tile[mapTileNum[getcorx()+1][getcory()+1]].colisao)){
+                seta_direita = true;
+                posicaoX += velocidade;
+            }
             
         }
         
@@ -45,18 +49,20 @@ public class Movimento implements KeyListener {
             System.out.print(getcory() + " ");
             System.out.println(getcorx());
             System.out.println(mapTileNum[getcorx()][getcory()+1]);
-            seta_esquerda = true;
-            posicaoX -= velocidade;
-        
+            if(!(tile[mapTileNum[getcorx()][getcory()+1]].colisao)){
+                seta_esquerda = true;
+                posicaoX -= velocidade;
+            }     
         }
 
         if((setas.getKeyCode() == KeyEvent.VK_S) || (setas.getKeyCode() == KeyEvent.VK_DOWN)){
             System.out.print(getcory() + " ");
             System.out.println(getcorx());
             System.out.println(mapTileNum[getcorx()][getcory()+1]);
-            seta_baixo = true;
-            posicaoY += velocidade;
-           
+            if(!(tile[mapTileNum[getcorx()][getcory()+1]].colisao)){
+                seta_baixo = true;
+                posicaoY += velocidade;
+            }    
         }
         
     }

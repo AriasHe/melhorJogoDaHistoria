@@ -24,7 +24,7 @@ public class Mecanica extends JPanel{
     protected int worldWith = tileSize * maxWorldCol;
     protected int wordHeight = tileSize * maxWorldRow; 
     int mapTileNum[][];
-    
+    Tijolos tile [];
     protected int FPS = 60;
     //protected int posicaoX = 100;
     //protected int posicaoY = 100;
@@ -49,7 +49,8 @@ public class Mecanica extends JPanel{
     public void inicioThread(){
         mapTileNum = cenario.mapaas();
         tecla.setmapTileNum(mapTileNum);
-        cenario.mapa();
+        tile = cenario.mapa();
+        tecla.setijolos(tile);
         thread_jogo = new Thread();
         thread_jogo.start();
         rodar();

@@ -6,8 +6,8 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 
 public class Tijolos {
-    protected BufferedImage imagem;
-    protected boolean colisao;
+    public BufferedImage imagem;
+    public boolean colisao;
     protected int maxScreenCol;
     protected int maxScreenLin;
     protected int mapTileNum[][];
