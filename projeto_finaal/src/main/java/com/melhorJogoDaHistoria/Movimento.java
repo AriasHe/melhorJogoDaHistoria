@@ -9,7 +9,7 @@ import com.melhorJogoDaHistoria.tijolos.Tijolos;
 
 public class Movimento implements KeyListener {
     protected boolean seta_cima, seta_baixo, seta_direita, seta_esquerda;
-    protected int posicaoX, posicaoY, velocidade,tileSize;
+    protected int posicaoX, posicaoY, velocidade,tileSize, monstro;
     AcertoContas jogo = new AcertoContas(); 
     int mapTileNum[][];
     Tijolos tile[];
@@ -27,6 +27,7 @@ public class Movimento implements KeyListener {
             System.out.print(getcory() + " ");
             System.out.println(getcorx());
             System.out.println(mapTileNum[getcorx()][getcory()]);
+            monstro = mapTileNum[getcorx()][getcory()];
             if(!(tile[mapTileNum[getcorx()][getcory()]].colisao)){
                seta_cima = true;
                posicaoY -= velocidade;
@@ -40,6 +41,7 @@ public class Movimento implements KeyListener {
             System.out.print(getcory() + " ");
             System.out.println(getcorx());
             System.out.println(mapTileNum[getcorx()+1][getcory()+1]);
+            monstro = mapTileNum[getcorx()+1][getcory()+1];
             if(!(tile[mapTileNum[getcorx()+1][getcory()+1]].colisao)){
                 seta_direita = true;
                 posicaoX += velocidade;
@@ -51,6 +53,7 @@ public class Movimento implements KeyListener {
             System.out.print(getcory() + " ");
             System.out.println(getcorx());
             System.out.println(mapTileNum[getcorx()][getcory()+1]);
+            monstro = mapTileNum[getcorx()][getcory()+1];
             if(!(tile[mapTileNum[getcorx()][getcory()+1]].colisao)){
                 seta_esquerda = true;
                 posicaoX -= velocidade;
@@ -61,14 +64,14 @@ public class Movimento implements KeyListener {
             System.out.print(getcory() + " ");
             System.out.println(getcorx());
             System.out.println(mapTileNum[getcorx()][getcory()+1]);
+            monstro = mapTileNum[getcorx()][getcory()+1];
             if(!(tile[mapTileNum[getcorx()][getcory()+1]].colisao)){
                 seta_baixo = true;
                 posicaoY += velocidade;
             }    
         }
           if(setas.getKeyCode() == KeyEvent.VK_SPACE){
-            System.out.println("vaza");
-            if(mapTileNum[getcorx()][getcory()]== 4){
+            if(monstro == 4){
                 jogo.encontro_monstro();
             }
         }
