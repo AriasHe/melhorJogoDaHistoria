@@ -1,15 +1,17 @@
 package com.melhorJogoDaHistoria.entity;
+import java.awt.image.BufferedImage;
 
-import java.awt.Rectangle;
 
-public class Entity {
-    protected int wordX, wordY;
-
-    protected int x,y;
-    protected int velocidade;
-    protected Rectangle soidArea;
-    protected boolean areaColisao = false;
-    
-     
-    
+public abstract class Entity {
+  //protected AcertoContas acerto = new AcertoContas();
+  protected BufferedImage boneco;
+  protected int forca,vida,defesa,ataque;
+  public abstract BufferedImage PlayerImage();
+  public abstract void atributos();
+  public abstract void ataque();
+  public abstract void defesa();
+  public abstract  void interacao();
+ 
 }
+
+

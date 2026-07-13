@@ -3,12 +3,14 @@ package com.melhorJogoDaHistoria;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 
+import com.melhorJogoDaHistoria.entity.AcertoContas;
 import com.melhorJogoDaHistoria.tijolos.Tijolos;
 
 
 public class Movimento implements KeyListener {
     protected boolean seta_cima, seta_baixo, seta_direita, seta_esquerda;
     protected int posicaoX, posicaoY, velocidade,tileSize;
+    AcertoContas jogo = new AcertoContas(); 
     int mapTileNum[][];
     Tijolos tile[];
 
@@ -64,7 +66,12 @@ public class Movimento implements KeyListener {
                 posicaoY += velocidade;
             }    
         }
-        
+          if(setas.getKeyCode() == KeyEvent.VK_SPACE){
+            System.out.println("vaza");
+            if(mapTileNum[getcorx()][getcory()]== 4){
+                jogo.encontro_monstro();
+            }
+        }
     }
     @Override
     //quando teclas são soltas
@@ -89,8 +96,12 @@ public class Movimento implements KeyListener {
     @Override
     //resulta em um caractere
     public void keyTyped(KeyEvent caractere){
+      
         
     }
+
+
+
     public int getcorx(){
         return posicaoX/tileSize;
     }

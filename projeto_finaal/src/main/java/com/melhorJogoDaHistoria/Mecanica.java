@@ -34,8 +34,8 @@ public class Mecanica extends JPanel{
     
     Thread thread_jogo;
     Movimento tecla = new Movimento(posicaoX,posicaoY,velocidade,tileSize); 
-    Tijolos mapa = new Tijolos();
-    Player player = new Player(this,linScreen,colScreen,tileSize);
+    //Tijolos mapa = new Tijolos();
+    Player player = new Player(linScreen,colScreen,tileSize);
     Gerenciadortijolos cenario = new Gerenciadortijolos(tileSize,maxWorldCol,maxWorldRow,linScreen,colScreen,tecla);
     
     public void inicializacao(){
@@ -47,6 +47,7 @@ public class Mecanica extends JPanel{
 
 
     public void inicioThread(){
+        
         mapTileNum = cenario.mapaas();
         tecla.setmapTileNum(mapTileNum);
         tile = cenario.mapa();
@@ -99,7 +100,7 @@ public class Mecanica extends JPanel{
         super.paintComponent(g);
         Graphics2D g2 = (Graphics2D)g;
         cenario.draw(g2);
-        player.draw(g2, tileSize);
+        player.draw(g2);
         
         //g2.setColor(Color.BLUE);
         //g2.fillRect(tecla.getPosicaoX(), tecla.getPosicaoY(), 48, 48);

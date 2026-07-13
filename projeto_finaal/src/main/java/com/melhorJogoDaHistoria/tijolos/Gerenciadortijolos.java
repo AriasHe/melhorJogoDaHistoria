@@ -56,6 +56,10 @@ public class Gerenciadortijolos {
             tile[3] = new Tijolos();
             tile[3].imagem = ImageIO.read(getClass().getResourceAsStream("/textura/terra.bmp"));
             tile[3].colisao = false;
+
+            tile[4] = new Tijolos();
+            tile[4].imagem = ImageIO.read(getClass().getResourceAsStream("/jogador/monsstro.png"));
+            tile[4].colisao = true;
             
         }catch(IOException e) {
             System.out.println("Unexcepted Exception");
@@ -85,10 +89,10 @@ public class Gerenciadortijolos {
                     x = vetor[i];
                     //System.out.print(vetor[i]);
                     mapTileNum[i][linha] = x;
-                    System.out.print(mapTileNum[i][linha]);
+                    //System.out.print(mapTileNum[i][linha]);
                 }
                 linha++;
-                System.out.println("");
+                //System.out.println("");
             
             }
             br.close();
@@ -96,11 +100,6 @@ public class Gerenciadortijolos {
         }
         return mapTileNum;
     }
-
-
-//                    mapTileNum[i][linha] = vetor[i];
-  //                  System.out.print(mapTileNum[i][linha]);
-    //            }
 
 
 
