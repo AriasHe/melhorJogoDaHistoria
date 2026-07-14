@@ -24,6 +24,9 @@ public class Ladino extends  Entity {
     defesa = 2;
     ataque = 8;
   }
+  public void apresentacao(){
+    
+  }
   public void  ataque(){
 
     

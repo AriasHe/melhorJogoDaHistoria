@@ -4,6 +4,7 @@ import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 
 import com.melhorJogoDaHistoria.entity.AcertoContas;
+import com.melhorJogoDaHistoria.entity.Entity;
 import com.melhorJogoDaHistoria.tijolos.Tijolos;
 
 
@@ -13,7 +14,7 @@ public class Movimento implements KeyListener {
     AcertoContas jogo = new AcertoContas(); 
     int mapTileNum[][];
     Tijolos tile[];
-
+    Entity personagem;
     public Movimento (int posicaoX,int posicaoY,int velocidade, int tileSize){
         this.posicaoX = posicaoX;
         this.posicaoY = posicaoY;
@@ -24,9 +25,9 @@ public class Movimento implements KeyListener {
     //quando setas e teclas de controles são utilizados
     public void keyPressed(KeyEvent setas){ 
         if((setas.getKeyCode() == KeyEvent.VK_W) || (setas.getKeyCode() == KeyEvent.VK_UP)){
-            System.out.print(getcory() + " ");
-            System.out.println(getcorx());
-            System.out.println(mapTileNum[getcorx()][getcory()]);
+            //System.out.print(getcory() + " ");
+            //System.out.println(getcorx());
+            //System.out.println(mapTileNum[getcorx()][getcory()]);
             monstro = mapTileNum[getcorx()][getcory()];
             if(!(tile[mapTileNum[getcorx()][getcory()]].colisao)){
                seta_cima = true;
@@ -38,9 +39,9 @@ public class Movimento implements KeyListener {
            
         }
         if((setas.getKeyCode() == KeyEvent.VK_D) || (setas.getKeyCode() == KeyEvent.VK_RIGHT)){
-            System.out.print(getcory() + " ");
-            System.out.println(getcorx());
-            System.out.println(mapTileNum[getcorx()+1][getcory()+1]);
+            //System.out.print(getcory() + " ");
+            //System.out.println(getcorx());
+            //System.out.println(mapTileNum[getcorx()+1][getcory()+1]);
             monstro = mapTileNum[getcorx()+1][getcory()+1];
             if(!(tile[mapTileNum[getcorx()+1][getcory()+1]].colisao)){
                 seta_direita = true;
@@ -50,9 +51,9 @@ public class Movimento implements KeyListener {
         }
         
         if((setas.getKeyCode() == KeyEvent.VK_A) || (setas.getKeyCode() == KeyEvent.VK_LEFT)){
-            System.out.print(getcory() + " ");
-            System.out.println(getcorx());
-            System.out.println(mapTileNum[getcorx()][getcory()+1]);
+            //System.out.print(getcory() + " ");
+            //System.out.println(getcorx());
+            //System.out.println(mapTileNum[getcorx()][getcory()+1]);
             monstro = mapTileNum[getcorx()][getcory()+1];
             if(!(tile[mapTileNum[getcorx()][getcory()+1]].colisao)){
                 seta_esquerda = true;
@@ -61,9 +62,9 @@ public class Movimento implements KeyListener {
         }
 
         if((setas.getKeyCode() == KeyEvent.VK_S) || (setas.getKeyCode() == KeyEvent.VK_DOWN)){
-            System.out.print(getcory() + " ");
-            System.out.println(getcorx());
-            System.out.println(mapTileNum[getcorx()][getcory()+1]);
+            //System.out.print(getcory() + " ");
+            //System.out.println(getcorx());
+            //System.out.println(mapTileNum[getcorx()][getcory()+1]);
             monstro = mapTileNum[getcorx()][getcory()+1];
             if(!(tile[mapTileNum[getcorx()][getcory()+1]].colisao)){
                 seta_baixo = true;
@@ -120,7 +121,9 @@ public class Movimento implements KeyListener {
     public int getPosicaoX() {
         return posicaoX;
     }
-
+    public void setipersonagem(Entity personagem){
+        this.personagem = personagem;
+    }
     public int getPosicaoY() {
         return posicaoY;
     }

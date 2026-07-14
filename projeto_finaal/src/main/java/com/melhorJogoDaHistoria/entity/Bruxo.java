@@ -20,8 +20,17 @@ public class Bruxo extends  Entity {
   public  void atributos(){
     forca = 3;
     vida = 20;
-    defesa = 5;
+    defesa = 1;
     ataque = 4;
+    nome = "AVALON";
+  }
+  public void apresentacao(){
+     atributos();
+     System.out.println("Eu sou um grandioso mago, o grande "+ nome+ "!!!");
+     atributoss();
+  }
+  public void atributoss(){
+    System.out.println("força:" + forca + " vida:" + vida + " defesa:" + defesa + " e ataque:"+ataque);
   }
   public void  ataque(){
   

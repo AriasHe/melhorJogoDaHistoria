@@ -119,7 +119,7 @@ public class Gerenciadortijolos {
             int screenX = x - tecla.getPosicaoX() + colScreen/2 - tileSize/2;
             int screenY = y - tecla.getPosicaoY() + linScreen/2 - tileSize/2;
 
-            //System.out.println(screenX);
+            //System.out.println(tileNum);
             
              g2.drawImage(tile[tileNum].imagem,screenX,screenY,tileSize,tileSize,null);
             

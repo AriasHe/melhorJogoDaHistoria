@@ -14,8 +14,8 @@ import com.melhorJogoDaHistoria.tijolos.Tijolos;
 public class Mecanica extends JPanel{
 
     protected  int tileSize = 130;
-    protected  int maxScreenCol =20;
-    protected  int maxScreenLin = 12;
+    protected  int maxScreenCol =12;
+    protected  int maxScreenLin = 6;
     protected  int linScreen = tileSize*maxScreenLin;
     protected  int colScreen = tileSize*maxScreenCol;
 
@@ -47,7 +47,7 @@ public class Mecanica extends JPanel{
 
 
     public void inicioThread(){
-        
+
         mapTileNum = cenario.mapaas();
         tecla.setmapTileNum(mapTileNum);
         tile = cenario.mapa();
@@ -55,8 +55,6 @@ public class Mecanica extends JPanel{
         thread_jogo = new Thread();
         thread_jogo.start();
         rodar();
-
-    
     }
     public void rodar(){
             double drawInterval = 1000000000/FPS;
