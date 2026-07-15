@@ -10,27 +10,40 @@ import com.melhorJogoDaHistoria.tijolos.Tijolos;
 
 public class Movimento implements KeyListener {
     protected boolean seta_cima, seta_baixo, seta_direita, seta_esquerda;
-    protected int posicaoX, posicaoY, velocidade,tileSize, monstro;
-    AcertoContas jogo = new AcertoContas(); 
+    protected int posicaoX, posicaoY, velocidade,tileSize, monstro,worldWith,wordHeight;
+    AcertoContas jogo = new AcertoContas(tileSize); 
     int mapTileNum[][],x = 550,escolha = 0;
     boolean inicio = true;
     Tijolos tile[];
     Entity personagem;
-    public Movimento (int posicaoX,int posicaoY,int velocidade, int tileSize){
+    public Movimento (int posicaoX,int posicaoY,int velocidade, int tileSize,int worldWith, int wordHeight){
         this.posicaoX = posicaoX;
         this.posicaoY = posicaoY;
         this.velocidade = velocidade;
         this.tileSize = tileSize;
+        this.wordHeight = wordHeight;
+        this.worldWith = worldWith;
     }    
     @Override
     //quando setas e teclas de controles são utilizados
     public void keyPressed(KeyEvent setas){ 
+        if(posicaoX < tileSize ){
+            posicaoX = tileSize;
+        }
+        if(posicaoY <tileSize ){
+            posicaoY = tileSize;
+        }
+        if(posicaoX>(worldWith - 2*tileSize)){
+            posicaoX = worldWith - 2*tileSize;
+        }
+        if(posicaoY>(wordHeight - 2*tileSize)){
+            posicaoY = wordHeight - 2*tileSize;
+        }
         if((setas.getKeyCode() == KeyEvent.VK_W) || (setas.getKeyCode() == KeyEvent.VK_UP)){
             //System.out.print(getcory() + " ");
             //System.out.println(getcorx());
             //System.out.println(mapTileNum[getcorx()][getcory()]);
-            
-            if(this.inicio){
+            if(inicio){
                 if(x == 650){
                     x = 600;
                 }else{
@@ -41,7 +54,7 @@ public class Movimento implements KeyListener {
  
                 }
 
-            }else{
+            else{
                 monstro = mapTileNum[getcorx()][getcory()];
                 if(!(tile[mapTileNum[getcorx()][getcory()]].colisao)){
                     seta_cima = true;
@@ -49,7 +62,7 @@ public class Movimento implements KeyListener {
                 }
             }
             
-            
+        }  
         if((setas.getKeyCode() == KeyEvent.VK_D) || (setas.getKeyCode() == KeyEvent.VK_RIGHT)){
             //System.out.print(getcory() + " ");
             //System.out.println(getcorx());
@@ -78,7 +91,7 @@ public class Movimento implements KeyListener {
             //System.out.println(getcorx());
             //System.out.println(mapTileNum[getcorx()][getcory()+1]);
             if(inicio){
-            if(x == 550){
+                if(x == 550){
                     x = 600;
                 }else{
                     if(x == 600){
@@ -91,7 +104,8 @@ public class Movimento implements KeyListener {
                 seta_baixo = true;
                 posicaoY += velocidade;
             }    
-        }}
+        }
+    }
           if(setas.getKeyCode() == KeyEvent.VK_SPACE){
             if(monstro == 4){
                 jogo.encontro_monstro();
@@ -111,7 +125,8 @@ public class Movimento implements KeyListener {
                     }
                 }
                 
-                System.out.println(escolha);
+                getescolha(escolha);
+                //System.out.println(escolha);
                 inicio = false;
                 getc();
             }
@@ -186,5 +201,9 @@ public class Movimento implements KeyListener {
     }
     public boolean getrue(){
         return true;
+    }
+
+    public void getescolha(int escolha){
+        this.escolha = escolha;
     }
 }

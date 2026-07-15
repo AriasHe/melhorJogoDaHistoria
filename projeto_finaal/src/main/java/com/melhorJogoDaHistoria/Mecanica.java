@@ -7,6 +7,8 @@ import java.awt.Graphics2D;
 
 import javax.swing.JPanel;
 
+import com.melhorJogoDaHistoria.entity.AcertoContas;
+import com.melhorJogoDaHistoria.entity.Entity;
 import com.melhorJogoDaHistoria.entity.Player;
 import com.melhorJogoDaHistoria.tijolos.Gerenciadortijolos;
 import com.melhorJogoDaHistoria.tijolos.Tijolos;
@@ -29,6 +31,7 @@ public class Mecanica extends JPanel{
     protected int wordHeight = tileSize * maxWorldRow; 
     int mapTileNum[][];
     Tijolos tile [];
+    int escolha;
     protected int FPS = 60;
     //protected int posicaoX = 100;
     //protected int posicaoY = 100;
@@ -36,10 +39,14 @@ public class Mecanica extends JPanel{
     protected int posicaoY = tileSize * maxWorldRow/2;
     protected  int velocidade = 8;
     
+    Entity personagem;
     Thread thread_jogo;
-    Movimento tecla = new Movimento(posicaoX,posicaoY,velocidade,tileSize); 
+    Dialogos dialogo = new Dialogos();
+    Movimento tecla = new Movimento(posicaoX,posicaoY,velocidade,tileSize,worldWith,wordHeight); 
     Painel painel = new Painel();
+    //Escolha escolha = new Escolha();
     //Tijolos mapa = new Tijolos();
+    AcertoContas jogo = new AcertoContas(tileSize);
     Player player = new Player(linScreen,colScreen,tileSize);
     Gerenciadortijolos cenario = new Gerenciadortijolos(tileSize,maxWorldCol,maxWorldRow,linScreen,colScreen,tecla);
     
@@ -49,6 +56,7 @@ public class Mecanica extends JPanel{
         this.setBackground(Color.black);
         this.setDoubleBuffered(true);
         this.addKeyListener(tecla);
+        //this.addKeyListener(escolha);
         this.setFocusable(true);
     }
 
@@ -105,7 +113,7 @@ public class Mecanica extends JPanel{
         super.paintComponent(g);
         Graphics2D g2 = (Graphics2D)g;
         inicio = tecla.getc();
-        System.out.println(inicio);
+        //System.out.println(inicio);
         if(inicio){
             
             painel.draw(g2,colScreen,tileSize);
@@ -114,9 +122,13 @@ public class Mecanica extends JPanel{
             
 
         }else{
+            escolha = tecla.setescolha();
+            personagem = jogo.teste(escolha);
             g2.clearRect(0, 0, linScreen, colScreen);
             cenario.draw(g2);
-            player.draw(g2);
+            player.draw(g2,personagem);
+            dialogo.caixaDialogos(g2, tileSize,colScreen);
+            dialogo.escrever("foda");
         }
 
         

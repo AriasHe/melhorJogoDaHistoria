@@ -14,24 +14,17 @@ public class Painel {
     Graphics2D g2;
     Font fonte;
     String texto;
-    int colScreen, x,y;
+    int colScreen, x,y,conta;
     BufferedImage bruxo, guerreiro, bardo;
+
     public void draw(Graphics2D g2, int colScreen, int tileSize){
         y = 0;
         this.g2 = g2;
         this.colScreen = colScreen;
-        try {
-            InputStream is = getClass().getResourceAsStream("/fontes/x12y16pxMaruMonica.ttf");
-            fonte = Font.createFont(Font.TRUETYPE_FONT, is);
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-
         
-        g2.setFont(fonte);        
+        configuraFont();
+
         g2.setFont(g2.getFont().deriveFont(Font.BOLD, 75F));
-        
-
         texto = "Escolha seu personagem: ";
         x = xcentro(texto, g2);
         y += tileSize;
@@ -41,24 +34,10 @@ public class Painel {
         g2.setColor(Color.white);
         g2.drawString(texto, x, y);
 
-        try{
-            bruxo = ImageIO.read(getClass().getResourceAsStream("/jogador/bruxo.png"));
-        }catch(IOException e) {
-           e.printStackTrace();
-        }
-        try{
-            guerreiro = ImageIO.read(getClass().getResourceAsStream("/jogador/guerreiro.png"));
-        }catch(IOException e) {
-           e.printStackTrace();
-        }
-        try{
-            bardo = ImageIO.read(getClass().getResourceAsStream("/jogador/bardo.png"));
-        }catch(IOException e) {
-           e.printStackTrace();
-        }
-
+        criandoPersonagem();
+        conta = (int)(tileSize * 1.31);
         g2.drawImage(bardo,300,150,tileSize*3,tileSize*3,null);
-        g2.drawImage(guerreiro,700,200,170,tileSize*2,null);
+        g2.drawImage(guerreiro,700,200,conta,tileSize*2,null);
         g2.drawImage(bruxo,900,200,tileSize*2,tileSize*2,null);
 
         g2.setFont(g2.getFont().deriveFont(Font.BOLD, 50F));
@@ -87,7 +66,36 @@ public class Painel {
         int textWidth = metrics.stringWidth(texto);
         return (colScreen - textWidth) / 2;
     }
+   
+     public void configuraFont() {
+        try {
+            InputStream is = getClass().getResourceAsStream("/fontes/x12y16pxMaruMonica.ttf");
+            fonte = Font.createFont(Font.TRUETYPE_FONT, is);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
         
+        g2.setFont(fonte);        
+        
+     }  
+
+     public void criandoPersonagem(){try{
+            bruxo = ImageIO.read(getClass().getResourceAsStream("/jogador/bruxo.png"));
+        }catch(IOException e) {
+           e.printStackTrace();
+        }
+        try{
+            guerreiro = ImageIO.read(getClass().getResourceAsStream("/jogador/guerreiro.png"));
+        }catch(IOException e) {
+           e.printStackTrace();
+        }
+        try{
+            bardo = ImageIO.read(getClass().getResourceAsStream("/jogador/bardo.png"));
+        }catch(IOException e) {
+           e.printStackTrace();
+        }
+    }
 
     }
 

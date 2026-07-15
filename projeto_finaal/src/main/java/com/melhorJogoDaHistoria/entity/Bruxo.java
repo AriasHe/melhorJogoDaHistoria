@@ -5,7 +5,10 @@ import java.io.IOException;
 import javax.imageio.ImageIO;
 
 public class Bruxo extends  Entity {
-    
+  int tileSize,x,y;
+  public Bruxo(int tileSize){
+    this.tileSize = tileSize;
+  }
   @Override
   public  BufferedImage PlayerImage(){
     try{
@@ -18,6 +21,8 @@ public class Bruxo extends  Entity {
 
   @Override
   public  void atributos(){
+    x = 2*tileSize;
+    y = 2*tileSize;
     forca = 3;
     vida = 20;
     defesa = 1;
