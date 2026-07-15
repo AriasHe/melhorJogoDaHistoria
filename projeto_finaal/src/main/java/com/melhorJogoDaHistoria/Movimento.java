@@ -12,7 +12,8 @@ public class Movimento implements KeyListener {
     protected boolean seta_cima, seta_baixo, seta_direita, seta_esquerda;
     protected int posicaoX, posicaoY, velocidade,tileSize, monstro;
     AcertoContas jogo = new AcertoContas(); 
-    int mapTileNum[][];
+    int mapTileNum[][],x = 550,escolha = 0;
+    boolean inicio = true;
     Tijolos tile[];
     Entity personagem;
     public Movimento (int posicaoX,int posicaoY,int velocidade, int tileSize){
@@ -28,16 +29,27 @@ public class Movimento implements KeyListener {
             //System.out.print(getcory() + " ");
             //System.out.println(getcorx());
             //System.out.println(mapTileNum[getcorx()][getcory()]);
-            monstro = mapTileNum[getcorx()][getcory()];
-            if(!(tile[mapTileNum[getcorx()][getcory()]].colisao)){
-               seta_cima = true;
-               posicaoY -= velocidade;
+            
+            if(this.inicio){
+                if(x == 650){
+                    x = 600;
+                }else{
+                    if(x == 600){
+                        x = 550;
+                    }
+                }
+ 
+                }
+
+            }else{
+                monstro = mapTileNum[getcorx()][getcory()];
+                if(!(tile[mapTileNum[getcorx()][getcory()]].colisao)){
+                    seta_cima = true;
+                    posicaoY -= velocidade;
+                }
             }
             
             
-            
-           
-        }
         if((setas.getKeyCode() == KeyEvent.VK_D) || (setas.getKeyCode() == KeyEvent.VK_RIGHT)){
             //System.out.print(getcory() + " ");
             //System.out.println(getcorx());
@@ -65,16 +77,45 @@ public class Movimento implements KeyListener {
             //System.out.print(getcory() + " ");
             //System.out.println(getcorx());
             //System.out.println(mapTileNum[getcorx()][getcory()+1]);
+            if(inicio){
+            if(x == 550){
+                    x = 600;
+                }else{
+                    if(x == 600){
+                        x = 650;
+                    }
+                }
+            }else{ 
             monstro = mapTileNum[getcorx()][getcory()+1];
             if(!(tile[mapTileNum[getcorx()][getcory()+1]].colisao)){
                 seta_baixo = true;
                 posicaoY += velocidade;
             }    
-        }
+        }}
           if(setas.getKeyCode() == KeyEvent.VK_SPACE){
             if(monstro == 4){
                 jogo.encontro_monstro();
             }
+        }
+        if(setas.getKeyCode() == KeyEvent.VK_ENTER){
+            if(inicio){
+                if(x == 550){
+                    escolha = 3;
+                }else{
+                    if(x == 600){
+                        escolha = 2;
+                    }else{
+                        if(x == 650){
+                            escolha = 1;
+                        }
+                    }
+                }
+                
+                System.out.println(escolha);
+                inicio = false;
+                getc();
+            }
+           //System.out.println(inicio); 
         }
     }
     @Override
@@ -104,8 +145,14 @@ public class Movimento implements KeyListener {
         
     }
 
+    public void getInicio(boolean inicio){
+        this.inicio = inicio;
+    }
 
 
+    public int setescolha(){
+        return escolha;
+    }
     public int getcorx(){
         return posicaoX/tileSize;
     }
@@ -127,8 +174,17 @@ public class Movimento implements KeyListener {
     public int getPosicaoY() {
         return posicaoY;
     }
-
+    public int setposicao(){
+        return x;
+    }
     public boolean getSeta(){
         return seta_baixo;
     }   
+    public boolean getc(){
+        
+        return inicio;
+    }
+    public boolean getrue(){
+        return true;
+    }
 }

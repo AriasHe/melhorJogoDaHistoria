@@ -5,12 +5,14 @@ public class AcertoContas {
     Random gerador = new Random();
     Entity personagem;
     Entity monstro = new Monstro();
-  
-    public Entity teste(){
-        
-        int escolha = 1;
+    int escolha = 2;
+    
 
+    public Entity teste(){
+        System.out.println("teste");
+        
         if(escolha == 1){
+            System.out.println("teste2");
             personagem = new Bruxo();
         }
         if(escolha == 2){

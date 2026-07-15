@@ -1,5 +1,6 @@
 package com.melhorJogoDaHistoria;
 
+import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
@@ -12,6 +13,9 @@ import com.melhorJogoDaHistoria.tijolos.Tijolos;
 
 
 public class Mecanica extends JPanel{
+
+    protected boolean inicio = true;
+
 
     protected  int tileSize = 130;
     protected  int maxScreenCol =12;
@@ -34,12 +38,15 @@ public class Mecanica extends JPanel{
     
     Thread thread_jogo;
     Movimento tecla = new Movimento(posicaoX,posicaoY,velocidade,tileSize); 
+    Painel painel = new Painel();
     //Tijolos mapa = new Tijolos();
     Player player = new Player(linScreen,colScreen,tileSize);
     Gerenciadortijolos cenario = new Gerenciadortijolos(tileSize,maxWorldCol,maxWorldRow,linScreen,colScreen,tecla);
     
+
     public void inicializacao(){
         this.setPreferredSize(new Dimension(colScreen,linScreen));
+        this.setBackground(Color.black);
         this.setDoubleBuffered(true);
         this.addKeyListener(tecla);
         this.setFocusable(true);
@@ -47,7 +54,7 @@ public class Mecanica extends JPanel{
 
 
     public void inicioThread(){
-
+        //System.out.println(inicio);
         mapTileNum = cenario.mapaas();
         tecla.setmapTileNum(mapTileNum);
         tile = cenario.mapa();
@@ -97,8 +104,22 @@ public class Mecanica extends JPanel{
     public void paintComponent(Graphics g){
         super.paintComponent(g);
         Graphics2D g2 = (Graphics2D)g;
-        cenario.draw(g2);
-        player.draw(g2);
+        inicio = tecla.getc();
+        System.out.println(inicio);
+        if(inicio){
+            
+            painel.draw(g2,colScreen,tileSize);
+            tecla.getInicio(inicio);
+            g2.drawString(">", 600, tecla.setposicao());
+            
+
+        }else{
+            g2.clearRect(0, 0, linScreen, colScreen);
+            cenario.draw(g2);
+            player.draw(g2);
+        }
+
+        
         
         //g2.setColor(Color.BLUE);
         //g2.fillRect(tecla.getPosicaoX(), tecla.getPosicaoY(), 48, 48);

@@ -1,5 +1,7 @@
 package com.melhorJogoDaHistoria;
 
+import java.awt.Color;
+
 import javax.swing.JFrame;
 
 
@@ -25,6 +27,7 @@ public class Aba {
   public void cirar() {
     
     frame = new JFrame("titulo");
+    frame.setBackground(Color.black);
     frame.setVisible(true);
     frame.setSize(colScreen, linScreen);
     frame.setLocationRelativeTo(null);
