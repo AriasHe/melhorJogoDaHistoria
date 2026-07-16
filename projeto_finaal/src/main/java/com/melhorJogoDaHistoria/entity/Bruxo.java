@@ -4,10 +4,14 @@ import java.io.IOException;
 
 import javax.imageio.ImageIO;
 
+import com.melhorJogoDaHistoria.Dialogos;
+
 public class Bruxo extends  Entity {
   int tileSize,x,y;
-  public Bruxo(int tileSize){
-    this.tileSize = tileSize;
+  String texto;
+  Dialogos dialogo;
+  public Bruxo(){
+    //this.tileSize = tileSize;
   }
   @Override
   public  BufferedImage PlayerImage(){
@@ -21,18 +25,22 @@ public class Bruxo extends  Entity {
 
   @Override
   public  void atributos(){
-    x = 2*tileSize;
-    y = 2*tileSize;
+    //x = 2*tileSize;
+    //y = 2*tileSize;
     forca = 3;
     vida = 20;
     defesa = 1;
     ataque = 4;
     nome = "AVALON";
   }
-  public void apresentacao(){
-     atributos();
-     System.out.println("Eu sou um grandioso mago, o grande "+ nome+ "!!!");
-     atributoss();
+  
+  public String apresentacao(){
+    
+    texto = "Eu sou um grandioso mago, o grande "+ nome+ "!!!";
+    return texto; 
+     //System.out.println("Eu sou um grandioso mago, o grande "+ nome+ "!!!");
+     
+     //atributoss();
   }
   public void atributoss(){
     System.out.println("força:" + forca + " vida:" + vida + " defesa:" + defesa + " e ataque:"+ataque);

@@ -7,8 +7,8 @@ import javax.imageio.ImageIO;
 public class Guerreiro extends  Entity {
   int tileSize,x,y;
 
-  public Guerreiro(int tileSize){
-    this.tileSize = tileSize;
+  public Guerreiro(){//int tileSize){
+    //this.tileSize = tileSize;
   }
 
   @Override
@@ -23,16 +23,16 @@ public class Guerreiro extends  Entity {
 
   @Override
   public  void atributos(){
-    x = (int)(tileSize * 1.31);
-    y = 2*tileSize;
+   // x = (int)(tileSize * 1.31);
+   // y = 2*tileSize;
     forca = 2;
     vida = 30;
     defesa = 2;
     ataque = 8;
   }
  
-  public void apresentacao(){
-    
+  public String apresentacao(){
+    return "morra java morra";
   }
   public void  ataque(){
 

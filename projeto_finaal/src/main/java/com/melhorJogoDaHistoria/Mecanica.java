@@ -9,6 +9,7 @@ import javax.swing.JPanel;
 
 import com.melhorJogoDaHistoria.entity.AcertoContas;
 import com.melhorJogoDaHistoria.entity.Entity;
+import com.melhorJogoDaHistoria.entity.EscPersonage;
 import com.melhorJogoDaHistoria.entity.Player;
 import com.melhorJogoDaHistoria.tijolos.Gerenciadortijolos;
 import com.melhorJogoDaHistoria.tijolos.Tijolos;
@@ -35,18 +36,21 @@ public class Mecanica extends JPanel{
     protected int FPS = 60;
     //protected int posicaoX = 100;
     //protected int posicaoY = 100;
-    protected int posicaoX = tileSize * maxWorldCol/2;
-    protected int posicaoY = tileSize * maxWorldRow/2;
+    protected int posicaoX = 3000;
+    protected int posicaoY = 3500;
     protected  int velocidade = 8;
     
     Entity personagem;
     Thread thread_jogo;
     Dialogos dialogo = new Dialogos();
-    Movimento tecla = new Movimento(posicaoX,posicaoY,velocidade,tileSize,worldWith,wordHeight); 
+     
     Painel painel = new Painel();
     //Escolha escolha = new Escolha();
     //Tijolos mapa = new Tijolos();
-    AcertoContas jogo = new AcertoContas(tileSize);
+    EscPersonage pers = new EscPersonage();
+
+    AcertoContas jogo = new AcertoContas(dialogo);
+    Movimento tecla = new Movimento(posicaoX,posicaoY,velocidade,tileSize,worldWith,wordHeight,jogo);
     Player player = new Player(linScreen,colScreen,tileSize);
     Gerenciadortijolos cenario = new Gerenciadortijolos(tileSize,maxWorldCol,maxWorldRow,linScreen,colScreen,tecla);
     
@@ -119,23 +123,21 @@ public class Mecanica extends JPanel{
             painel.draw(g2,colScreen,tileSize);
             tecla.getInicio(inicio);
             g2.drawString(">", 600, tecla.setposicao());
-            
-
+        
         }else{
             escolha = tecla.setescolha();
-            personagem = jogo.teste(escolha);
             g2.clearRect(0, 0, linScreen, colScreen);
             cenario.draw(g2);
-            player.draw(g2,personagem);
+            player.draw(g2,pers.teste(escolha));
             dialogo.caixaDialogos(g2, tileSize,colScreen);
-            dialogo.escrever("foda");
+            
         }
 
         
         
         //g2.setColor(Color.BLUE);
         //g2.fillRect(tecla.getPosicaoX(), tecla.getPosicaoY(), 48, 48);
-        g2.dispose();
+        //g2.dispose();
 
     }
 

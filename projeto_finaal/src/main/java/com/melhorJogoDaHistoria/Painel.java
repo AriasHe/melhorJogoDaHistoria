@@ -80,7 +80,8 @@ public class Painel {
         
      }  
 
-     public void criandoPersonagem(){try{
+     public void criandoPersonagem(){
+        try{
             bruxo = ImageIO.read(getClass().getResourceAsStream("/jogador/bruxo.png"));
         }catch(IOException e) {
            e.printStackTrace();

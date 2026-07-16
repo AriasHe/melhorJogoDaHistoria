@@ -5,11 +5,17 @@ import java.awt.Color;
 import java.awt.Font;
 import java.awt.Graphics2D;
 import java.io.InputStream;
+//import java.awt.InputStream;
 
 public class Dialogos {
     Graphics2D g2;
     int tileSize,x,X,Y;
     Font fonte;
+    String texto;
+
+    public void atualizarTexto(String texto){
+        this.texto = texto;
+    }
     public void caixaDialogos(Graphics2D g2, int tileSize,int colScreen){
         x = 60;
         this.g2 = g2;
@@ -23,15 +29,12 @@ public class Dialogos {
         g2.setColor(c);
         g2.setStroke(new BasicStroke(5));
         g2.drawRoundRect(x+5, (8*x)+5 - 20, colScreen - 2*x -10, 4*x - 10, 25, 25);
-      
+        escrever("do balaco baco");    
     }
     public void escrever(String texto){
-        
-        configuraFont();
-
         X=0;
         Y=420;
-        g2.setFont(fonte);        
+        g2.setFont(configuraFont());          
         g2.setFont(g2.getFont().deriveFont(Font.PLAIN, 50F));
 
         X += tileSize;
@@ -40,16 +43,14 @@ public class Dialogos {
     }
 
     
-    public void configuraFont() {
+    public Font configuraFont() {
     try {
         InputStream is = getClass().getResourceAsStream("/fontes/x12y16pxMaruMonica.ttf");
         fonte = Font.createFont(Font.TRUETYPE_FONT, is);
     } catch (Exception e) {
         e.printStackTrace();
     }
-
-    
-    g2.setFont(fonte);        
+    return fonte;      
     
      }  
 }

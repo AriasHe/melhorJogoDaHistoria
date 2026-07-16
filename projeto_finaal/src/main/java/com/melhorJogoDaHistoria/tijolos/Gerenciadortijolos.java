@@ -42,20 +42,20 @@ public class Gerenciadortijolos {
         try{
             //cenario = ImageIO.read(getClass().getResourceAsStream("/cenario/trees.png"));
             tile[0] = new Tijolos();
-            tile[0].imagem = ImageIO.read(getClass().getResourceAsStream("/textura/terraa.bmp"));
+            tile[0].imagem = ImageIO.read(getClass().getResourceAsStream("/textura/2.png"));
             tile[0].colisao = false;
 
             tile[1] = new Tijolos();
-            tile[1].imagem = ImageIO.read(getClass().getResourceAsStream("/textura/agua.bmp"));
+            tile[1].imagem = ImageIO.read(getClass().getResourceAsStream("/textura/4.png"));
             tile[1].colisao = true;
 
             tile[2] = new Tijolos();
-            tile[2].imagem = ImageIO.read(getClass().getResourceAsStream("/textura/grama.bmp"));
+            tile[2].imagem = ImageIO.read(getClass().getResourceAsStream("/textura/1.png"));
             tile[2].colisao = false;
 
             tile[3] = new Tijolos();
-            tile[3].imagem = ImageIO.read(getClass().getResourceAsStream("/textura/terra.bmp"));
-            tile[3].colisao = false;
+            tile[3].imagem = ImageIO.read(getClass().getResourceAsStream("/textura/3.png"));
+            tile[3].colisao = true;
 
             tile[4] = new Tijolos();
             tile[4].imagem = ImageIO.read(getClass().getResourceAsStream("/jogador/monsstro.png"));

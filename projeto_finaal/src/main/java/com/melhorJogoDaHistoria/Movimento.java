@@ -5,28 +5,35 @@ import java.awt.event.KeyListener;
 
 import com.melhorJogoDaHistoria.entity.AcertoContas;
 import com.melhorJogoDaHistoria.entity.Entity;
+import com.melhorJogoDaHistoria.entity.EscPersonage;
 import com.melhorJogoDaHistoria.tijolos.Tijolos;
 
 
 public class Movimento implements KeyListener {
     protected boolean seta_cima, seta_baixo, seta_direita, seta_esquerda;
     protected int posicaoX, posicaoY, velocidade,tileSize, monstro,worldWith,wordHeight;
-    AcertoContas jogo = new AcertoContas(tileSize); 
+    AcertoContas jogo;
+    EscPersonage per = new EscPersonage(); 
     int mapTileNum[][],x = 550,escolha = 0;
     boolean inicio = true;
     Tijolos tile[];
     Entity personagem;
-    public Movimento (int posicaoX,int posicaoY,int velocidade, int tileSize,int worldWith, int wordHeight){
+    public Movimento (int posicaoX,int posicaoY,int velocidade, int tileSize,int worldWith, int wordHeight, AcertoContas jogo){
         this.posicaoX = posicaoX;
         this.posicaoY = posicaoY;
         this.velocidade = velocidade;
         this.tileSize = tileSize;
         this.wordHeight = wordHeight;
         this.worldWith = worldWith;
+        this.jogo = jogo;
     }    
     @Override
     //quando setas e teclas de controles são utilizados
     public void keyPressed(KeyEvent setas){ 
+         if(escolha!= 0){
+                inicio = false;
+                getc();
+            }
         if(posicaoX < tileSize ){
             posicaoX = tileSize;
         }
@@ -40,6 +47,7 @@ public class Movimento implements KeyListener {
             posicaoY = wordHeight - 2*tileSize;
         }
         if((setas.getKeyCode() == KeyEvent.VK_W) || (setas.getKeyCode() == KeyEvent.VK_UP)){
+           
             //System.out.print(getcory() + " ");
             //System.out.println(getcorx());
             //System.out.println(mapTileNum[getcorx()][getcory()]);
@@ -108,7 +116,7 @@ public class Movimento implements KeyListener {
     }
           if(setas.getKeyCode() == KeyEvent.VK_SPACE){
             if(monstro == 4){
-                jogo.encontro_monstro();
+                jogo.encontro_monstro(per.teste(escolha));
             }
         }
         if(setas.getKeyCode() == KeyEvent.VK_ENTER){
@@ -125,7 +133,7 @@ public class Movimento implements KeyListener {
                     }
                 }
                 
-                getescolha(escolha);
+                setescolha();
                 //System.out.println(escolha);
                 inicio = false;
                 getc();

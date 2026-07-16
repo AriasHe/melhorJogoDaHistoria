@@ -25,11 +25,13 @@ public class Monstro extends Entity {
     ataque =10;
     nome = "EUZIRACK";
   }
-  public void apresentacao(){
+  @Override
+  public String apresentacao(){
     atributos();
     System.out.println("Eu sou " + nome + " Um mostro advindo das profundezas obcuras dos mares do norte." );
     System.out.println("Parei nessa pequena vila por um maldito herói que se meteu onde não devia");
     System.out.println("Agora eu quero VINGANÇA UAHAHAHHAH");
+    return "Agora eu quero VINGANÇA UAHAHAHHAH";
   }
   @Override
   public void ataque(){

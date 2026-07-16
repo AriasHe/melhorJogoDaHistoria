@@ -7,7 +7,6 @@ public class Player{
     
     int linScreen,colScreen,tileSize;
     
-    AcertoContas jogo = new AcertoContas(tileSize);
   
 
     public Player(int linScreen, int colScreen,int tileSize){
