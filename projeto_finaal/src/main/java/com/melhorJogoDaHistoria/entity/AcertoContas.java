@@ -34,7 +34,7 @@ public class AcertoContas {
             System.out.println("O seu numero de acertos é maior ou igual a defesa do "+ monstro.nome +", então voce ataca com "+personagem.ataque+" dano");
             personagem.ataque();
             tempo(4000);
-            monstro.vida = monstro.vida - (personagem.ataque - monstro.defesa);
+            monstro.tomarDano(personagem);
             System.out.println("Você acaba deixando "+ monstro.nome+ "com "+monstro.vida+ " de vida");
             tempo(10000);
         }else{
@@ -50,7 +50,7 @@ public class AcertoContas {
             System.out.println("O numero de acertos é maior ou igual a sua defesa, então ele te ataca com "+monstro.ataque+" dano");
             tempo(4000);
             monstro.ataque();
-            personagem.vida = personagem.vida - (monstro.ataque - personagem.defesa);
+            personagem.tomarDano(monstro);
             System.out.println( monstro.nome+ " te deixa com "+personagem.vida+ " de vida");
 
         }else{

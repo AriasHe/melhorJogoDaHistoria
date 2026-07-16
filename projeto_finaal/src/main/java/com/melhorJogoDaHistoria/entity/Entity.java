@@ -19,6 +19,10 @@ public abstract class Entity {
     return boneco;
   }
 
+  public void tomarDano(Entity inimigo) {
+    this.vida = this.vida - (inimigo.ataque - this.defesa);
+  }
+
   public abstract void ataque();
   public abstract void defesa();
   public abstract  void interacao();
