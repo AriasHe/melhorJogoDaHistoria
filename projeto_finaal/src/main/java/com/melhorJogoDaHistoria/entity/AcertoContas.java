@@ -16,8 +16,6 @@ public class AcertoContas {
     
   
     public void encontro_monstro(Entity personagem){
-        monstro.atributos();
-       
         dialogo.escrever(personagem.apresentacao());  
          //dialogo.atualizarTexto((personagem.texto));
         //System.out.println(personagem);

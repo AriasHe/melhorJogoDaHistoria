@@ -1,27 +1,18 @@
 package com.melhorJogoDaHistoria.entity;
 
 public class Bruxo extends  Entity {
-  int tileSize,x,y;
-  String texto;
   public Bruxo(){
-    //this.tileSize = tileSize;
-    this.imageResourcePath = "/jogador/bruxo.png";
-  }
-
-  @Override
-  public  void atributos(){
-    //x = 2*tileSize;
-    //y = 2*tileSize;
     forca = 3;
     vida = 20;
     defesa = 1;
     ataque = 4;
     nome = "AVALON";
+
+    this.imageResourcePath = "/jogador/bruxo.png";
   }
   
   public String apresentacao(){
-    
-    texto = "Eu sou um grandioso mago, o grande "+ nome+ "!!!";
+    String texto = "Eu sou um grandioso mago, o grande "+ nome+ "!!!";
     return texto; 
      //System.out.println("Eu sou um grandioso mago, o grande "+ nome+ "!!!");
      

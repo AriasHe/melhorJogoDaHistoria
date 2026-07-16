@@ -5,8 +5,8 @@ import javax.imageio.ImageIO;
 import java.io.IOException;
 
 public abstract class Entity {
-  protected int forca,vida,defesa,ataque,x,y;
-  protected String nome,texto;
+  protected int forca,vida,defesa,ataque;
+  protected String nome;
   protected String imageResourcePath;
 
   public BufferedImage getPlayerImage(){
@@ -19,7 +19,6 @@ public abstract class Entity {
     return boneco;
   }
 
-  public abstract void atributos();
   public abstract void ataque();
   public abstract void defesa();
   public abstract  void interacao();

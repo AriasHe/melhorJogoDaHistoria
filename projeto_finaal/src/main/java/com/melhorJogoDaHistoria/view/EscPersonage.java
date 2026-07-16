@@ -23,10 +23,7 @@ public class EscPersonage {
             }
         }
         }
-        
-        personagem.atributos();
-        //System.out.println(escolha);
+
         return personagem;
-    
     }
 }
