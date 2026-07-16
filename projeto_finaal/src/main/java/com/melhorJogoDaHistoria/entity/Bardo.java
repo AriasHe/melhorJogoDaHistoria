@@ -1,24 +1,11 @@
 package com.melhorJogoDaHistoria.entity;
-import java.awt.image.BufferedImage;
-import java.io.IOException;
-
-import javax.imageio.ImageIO;
 
 public class Bardo extends  Entity {
   int tileSize,x,y;
 
   public Bardo(){
     //this.tileSize = tileSize;
-  }
-
-  @Override
-  public  BufferedImage PlayerImage(){
-    try{
-        boneco = ImageIO.read(getClass().getResourceAsStream("/jogador/bardo.png"));
-    }catch(IOException e) {
-        e.printStackTrace();
-    }
-    return boneco;
+    this.imageResourcePath = "/jogador/bardo.png";
   }
 
   @Override

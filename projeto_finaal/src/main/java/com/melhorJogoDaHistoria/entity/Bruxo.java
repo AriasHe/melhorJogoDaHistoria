@@ -1,23 +1,11 @@
 package com.melhorJogoDaHistoria.entity;
-import java.awt.image.BufferedImage;
-import java.io.IOException;
-
-import javax.imageio.ImageIO;
 
 public class Bruxo extends  Entity {
   int tileSize,x,y;
   String texto;
   public Bruxo(){
     //this.tileSize = tileSize;
-  }
-  @Override
-  public  BufferedImage PlayerImage(){
-    try{
-        boneco = ImageIO.read(getClass().getResourceAsStream("/jogador/bruxo.png"));
-    }catch(IOException e) {
-        e.printStackTrace();
-    }
-    return boneco;
+    this.imageResourcePath = "/jogador/bruxo.png";
   }
 
   @Override

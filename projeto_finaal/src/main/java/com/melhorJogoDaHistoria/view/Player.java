@@ -30,7 +30,7 @@ public class Player{
         //g2.drawImage(PlayerImage(),teclas.getPosicaoX(),teclas.getPosicaoY(),tileSize,tileSize,null);
         //System.out.println(personagem.nome);
 
-        g2.drawImage(personagem.PlayerImage(),(colScreen/2-tileSize),(linScreen/2-tamanho),tileSize*3/2,tileSize*3/2,null);
+        g2.drawImage(personagem.getPlayerImage(),(colScreen/2-tileSize),(linScreen/2-tamanho),tileSize*3/2,tileSize*3/2,null);
         //System.out.println("foda");
     }
 }

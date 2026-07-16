@@ -1,20 +1,9 @@
 package com.melhorJogoDaHistoria.entity;
 
-import java.awt.image.BufferedImage;
-import java.io.IOException;
-
-import javax.imageio.ImageIO;
-
 public class Monstro extends Entity {
 
-@Override
-  public  BufferedImage PlayerImage(){
-    try{
-        boneco = ImageIO.read(getClass().getResourceAsStream("/jogador/monsstro.png"));
-    }catch(IOException e) {
-        e.printStackTrace();
-    }
-    return boneco;
+  public Monstro() {
+    this.imageResourcePath = "/jogador/monsstro.png";
   }
 
   @Override
