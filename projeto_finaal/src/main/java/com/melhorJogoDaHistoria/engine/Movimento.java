@@ -1,19 +1,19 @@
-package com.melhorJogoDaHistoria;
+package com.melhorJogoDaHistoria.engine;
 
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 
+import com.melhorJogoDaHistoria.engine.map.Tijolos;
 import com.melhorJogoDaHistoria.entity.AcertoContas;
 import com.melhorJogoDaHistoria.entity.Entity;
-import com.melhorJogoDaHistoria.entity.EscPersonage;
-import com.melhorJogoDaHistoria.tijolos.Tijolos;
+import com.melhorJogoDaHistoria.view.EscPersonage;
 
 
 public class Movimento implements KeyListener {
     protected boolean seta_cima, seta_baixo, seta_direita, seta_esquerda;
     protected int posicaoX, posicaoY, velocidade,tileSize, monstro,worldWith,wordHeight;
     AcertoContas jogo;
-    EscPersonage per = new EscPersonage(); 
+    EscPersonage per = new EscPersonage();
     int mapTileNum[][],x = 550,escolha = 0;
     boolean inicio = true;
     Tijolos tile[];

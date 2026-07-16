@@ -1,4 +1,4 @@
-package com.melhorJogoDaHistoria;
+package com.melhorJogoDaHistoria.view;
 
 import java.awt.Color;
 import java.awt.Dimension;
@@ -9,11 +9,10 @@ import javax.swing.JPanel;
 
 import com.melhorJogoDaHistoria.entity.AcertoContas;
 import com.melhorJogoDaHistoria.entity.Entity;
-import com.melhorJogoDaHistoria.entity.EscPersonage;
-import com.melhorJogoDaHistoria.entity.Player;
-import com.melhorJogoDaHistoria.tijolos.Gerenciadortijolos;
-import com.melhorJogoDaHistoria.tijolos.Tijolos;
-
+import com.melhorJogoDaHistoria.engine.map.Gerenciadortijolos;
+import com.melhorJogoDaHistoria.engine.map.Tijolos;
+import com.melhorJogoDaHistoria.engine.Movimento;
+import com.melhorJogoDaHistoria.view.Player;
 
 public class Mecanica extends JPanel{
 

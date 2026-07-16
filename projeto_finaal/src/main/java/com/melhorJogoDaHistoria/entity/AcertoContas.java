@@ -1,7 +1,7 @@
 package com.melhorJogoDaHistoria.entity;
 import java.util.Random;
 
-import com.melhorJogoDaHistoria.Dialogos;
+import com.melhorJogoDaHistoria.view.Dialogos;
 
 public class AcertoContas {
     Random gerador = new Random();

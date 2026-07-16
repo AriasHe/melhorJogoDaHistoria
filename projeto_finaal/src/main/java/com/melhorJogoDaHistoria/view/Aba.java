@@ -1,4 +1,4 @@
-package com.melhorJogoDaHistoria;
+package com.melhorJogoDaHistoria.view;
 
 import java.awt.Color;
 

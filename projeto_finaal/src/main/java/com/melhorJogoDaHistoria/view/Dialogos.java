@@ -1,4 +1,4 @@
-package com.melhorJogoDaHistoria;
+package com.melhorJogoDaHistoria.view;
 
 import java.awt.BasicStroke;
 import java.awt.Color;

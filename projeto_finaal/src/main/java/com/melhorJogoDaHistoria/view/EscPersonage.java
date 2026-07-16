@@ -1,4 +1,9 @@
-package com.melhorJogoDaHistoria.entity;
+package com.melhorJogoDaHistoria.view;
+
+import com.melhorJogoDaHistoria.entity.Bardo;
+import com.melhorJogoDaHistoria.entity.Bruxo;
+import com.melhorJogoDaHistoria.entity.Entity;
+import com.melhorJogoDaHistoria.entity.Guerreiro;
 
 public class EscPersonage {
     Entity personagem;

@@ -1,4 +1,4 @@
-package com.melhorJogoDaHistoria.tijolos;
+package com.melhorJogoDaHistoria.engine.map;
 
 import java.awt.Graphics2D;
 import java.awt.image.BufferedImage;
@@ -9,7 +9,7 @@ import java.io.InputStreamReader;
 
 import javax.imageio.ImageIO;
 
-import com.melhorJogoDaHistoria.Movimento;
+import com.melhorJogoDaHistoria.engine.Movimento;
 
 
 

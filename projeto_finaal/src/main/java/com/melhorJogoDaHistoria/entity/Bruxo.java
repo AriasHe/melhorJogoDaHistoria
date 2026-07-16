@@ -4,12 +4,9 @@ import java.io.IOException;
 
 import javax.imageio.ImageIO;
 
-import com.melhorJogoDaHistoria.Dialogos;
-
 public class Bruxo extends  Entity {
   int tileSize,x,y;
   String texto;
-  Dialogos dialogo;
   public Bruxo(){
     //this.tileSize = tileSize;
   }

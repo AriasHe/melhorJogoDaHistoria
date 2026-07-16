@@ -1,4 +1,4 @@
-package com.melhorJogoDaHistoria.tijolos;
+package com.melhorJogoDaHistoria.engine.map;
 
 import java.awt.image.BufferedImage;
 import java.io.BufferedReader;

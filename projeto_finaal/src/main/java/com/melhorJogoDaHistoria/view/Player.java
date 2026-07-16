@@ -1,7 +1,8 @@
-package com.melhorJogoDaHistoria.entity;
+package com.melhorJogoDaHistoria.view;
 
 import java.awt.Graphics2D;
 
+import com.melhorJogoDaHistoria.entity.Entity;
 
 public class Player{
     
