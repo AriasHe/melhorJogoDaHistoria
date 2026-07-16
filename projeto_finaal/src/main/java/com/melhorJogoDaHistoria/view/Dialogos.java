@@ -28,18 +28,20 @@ public class Dialogos {
         c = new Color(255,255,255);
         g2.setColor(c);
         g2.setStroke(new BasicStroke(5));
-        g2.drawRoundRect(x+5, (8*x)+5 - 20, colScreen - 2*x -10, 4*x - 10, 25, 25);
-        escrever("do balaco baco");    
+        g2.drawRoundRect(x+5, (8*x)+5 - 20, colScreen - 2*x -10, 4*x - 10, 25, 25);    
     }
     public void escrever(String texto){
         X=0;
         Y=420;
         g2.setFont(configuraFont());          
-        g2.setFont(g2.getFont().deriveFont(Font.PLAIN, 50F));
+        g2.setFont(g2.getFont().deriveFont(Font.PLAIN, 55F));
 
         X += tileSize;
         Y += tileSize;
-        g2.drawString(texto, X, Y);
+        for(String line : texto.split("\n")){
+            g2.drawString(line, X, Y);
+            Y += 80;
+        }
     }
 
     

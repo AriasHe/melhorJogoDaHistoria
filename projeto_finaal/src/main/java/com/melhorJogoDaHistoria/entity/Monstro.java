@@ -16,18 +16,24 @@ public class Monstro extends Entity {
     System.out.println("Eu sou " + nome + " Um mostro advindo das profundezas obcuras dos mares do norte." );
     System.out.println("Parei nessa pequena vila por um maldito herói que se meteu onde não devia");
     System.out.println("Agora eu quero VINGANÇA UAHAHAHHAH");
-    return "Agora eu quero VINGANÇA UAHAHAHHAH";
+    return " ";
   }
   @Override
   public void ataque(){
       System.out.println("UAGH UAGH Esses heróis são gostosos UAGH UAGH");
   }
-  public  void defesa(){
-
+  @Override
+  public String atributo(){
+    String texto = "força:" + forca + " vida:" + vida + " defesa:" + defesa + " e ataque:"+ataque;
+    System.out.println(texto);
+    return texto;
   }
-  public void interacao(){
-
+  @Override
+  public void defesa(){
+        System.out.println("O monstro tem "+defesa+" diminuindo o seu ataque em! "+defesa);
+    
   }
 }
+
 
 

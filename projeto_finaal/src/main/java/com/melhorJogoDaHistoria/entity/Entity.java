@@ -1,8 +1,8 @@
 package com.melhorJogoDaHistoria.entity;
 import java.awt.image.BufferedImage;
+import java.io.IOException;
 
 import javax.imageio.ImageIO;
-import java.io.IOException;
 
 public abstract class Entity {
   protected int forca,vida,defesa,ataque;
@@ -24,9 +24,9 @@ public abstract class Entity {
   }
 
   public abstract void ataque();
-  public abstract void defesa();
-  public abstract  void interacao();
+  public abstract String atributo();
   public abstract String apresentacao();
+  public abstract void defesa();
 }
 
 

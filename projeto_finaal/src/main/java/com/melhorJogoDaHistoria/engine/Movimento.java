@@ -18,6 +18,7 @@ public class Movimento implements KeyListener {
     boolean inicio = true;
     Tijolos tile[];
     Entity personagem;
+    String [] texto1; 
     public Movimento (int posicaoX,int posicaoY,int velocidade, int tileSize,int worldWith, int wordHeight, AcertoContas jogo){
         this.posicaoX = posicaoX;
         this.posicaoY = posicaoY;
@@ -47,10 +48,7 @@ public class Movimento implements KeyListener {
             posicaoY = wordHeight - 2*tileSize;
         }
         if((setas.getKeyCode() == KeyEvent.VK_W) || (setas.getKeyCode() == KeyEvent.VK_UP)){
-           
-            //System.out.print(getcory() + " ");
-            //System.out.println(getcorx());
-            //System.out.println(mapTileNum[getcorx()][getcory()]);
+
             if(inicio){
                 if(x == 650){
                     x = 600;
@@ -59,22 +57,16 @@ public class Movimento implements KeyListener {
                         x = 550;
                     }
                 }
- 
-                }
-
-            else{
+            }else{
                 monstro = mapTileNum[getcorx()][getcory()];
                 if(!(tile[mapTileNum[getcorx()][getcory()]].colisao)){
                     seta_cima = true;
                     posicaoY -= velocidade;
                 }
-            }
-            
+            }   
         }  
         if((setas.getKeyCode() == KeyEvent.VK_D) || (setas.getKeyCode() == KeyEvent.VK_RIGHT)){
-            //System.out.print(getcory() + " ");
-            //System.out.println(getcorx());
-            //System.out.println(mapTileNum[getcorx()+1][getcory()+1]);
+    
             monstro = mapTileNum[getcorx()+1][getcory()+1];
             if(!(tile[mapTileNum[getcorx()+1][getcory()+1]].colisao)){
                 seta_direita = true;
@@ -84,9 +76,7 @@ public class Movimento implements KeyListener {
         }
         
         if((setas.getKeyCode() == KeyEvent.VK_A) || (setas.getKeyCode() == KeyEvent.VK_LEFT)){
-            //System.out.print(getcory() + " ");
-            //System.out.println(getcorx());
-            //System.out.println(mapTileNum[getcorx()][getcory()+1]);
+          
             monstro = mapTileNum[getcorx()][getcory()+1];
             if(!(tile[mapTileNum[getcorx()][getcory()+1]].colisao)){
                 seta_esquerda = true;
@@ -95,9 +85,7 @@ public class Movimento implements KeyListener {
         }
 
         if((setas.getKeyCode() == KeyEvent.VK_S) || (setas.getKeyCode() == KeyEvent.VK_DOWN)){
-            //System.out.print(getcory() + " ");
-            //System.out.println(getcorx());
-            //System.out.println(mapTileNum[getcorx()][getcory()+1]);
+          
             if(inicio){
                 if(x == 550){
                     x = 600;
@@ -116,7 +104,8 @@ public class Movimento implements KeyListener {
     }
           if(setas.getKeyCode() == KeyEvent.VK_SPACE){
             if(monstro == 4){
-                jogo.encontro_monstro(per.teste(escolha));
+               jogo.encontro_monstro(personagem);
+                saida();
             }
         }
         if(setas.getKeyCode() == KeyEvent.VK_ENTER){
@@ -132,13 +121,12 @@ public class Movimento implements KeyListener {
                         }
                     }
                 }
-                
-                setescolha();
-                //System.out.println(escolha);
+                personagem = per.teste(escolha);
+                setepersonagem();
+               
                 inicio = false;
                 getc();
-            }
-           //System.out.println(inicio); 
+            } 
         }
     }
     @Override
@@ -166,6 +154,10 @@ public class Movimento implements KeyListener {
     public void keyTyped(KeyEvent caractere){
       
         
+     }
+    public String[] saida(){
+     
+        return texto1;
     }
 
     public void getInicio(boolean inicio){
@@ -173,8 +165,8 @@ public class Movimento implements KeyListener {
     }
 
 
-    public int setescolha(){
-        return escolha;
+    public Entity setepersonagem(){
+        return personagem;
     }
     public int getcorx(){
         return posicaoX/tileSize;

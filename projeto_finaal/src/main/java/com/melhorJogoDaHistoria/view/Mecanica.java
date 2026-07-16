@@ -7,12 +7,12 @@ import java.awt.Graphics2D;
 
 import javax.swing.JPanel;
 
-import com.melhorJogoDaHistoria.entity.AcertoContas;
-import com.melhorJogoDaHistoria.entity.Entity;
+import com.melhorJogoDaHistoria.engine.Movimento;
+import com.melhorJogoDaHistoria.engine.TempPers;
 import com.melhorJogoDaHistoria.engine.map.Gerenciadortijolos;
 import com.melhorJogoDaHistoria.engine.map.Tijolos;
-import com.melhorJogoDaHistoria.engine.Movimento;
-import com.melhorJogoDaHistoria.view.Player;
+import com.melhorJogoDaHistoria.entity.AcertoContas;
+import com.melhorJogoDaHistoria.entity.Entity;
 
 public class Mecanica extends JPanel{
 
@@ -24,30 +24,25 @@ public class Mecanica extends JPanel{
     protected  int maxScreenLin = 6;
     protected  int linScreen = tileSize*maxScreenLin;
     protected  int colScreen = tileSize*maxScreenCol;
-
     protected int maxWorldCol = 68;
     protected int maxWorldRow = 32;
     protected int worldWith = tileSize * maxWorldCol;
     protected int wordHeight = tileSize * maxWorldRow; 
-    int mapTileNum[][];
-    Tijolos tile [];
-    int escolha;
+    protected int mapTileNum[][];
+    protected Tijolos tile [];
+    protected int escolha;
     protected int FPS = 60;
-    //protected int posicaoX = 100;
-    //protected int posicaoY = 100;
     protected int posicaoX = 3000;
     protected int posicaoY = 3500;
     protected  int velocidade = 8;
     
     Entity personagem;
     Thread thread_jogo;
-    Dialogos dialogo = new Dialogos();
-     
-    Painel painel = new Painel();
-    //Escolha escolha = new Escolha();
-    //Tijolos mapa = new Tijolos();
-    EscPersonage pers = new EscPersonage();
 
+    TempPers temp = new TempPers();
+    Dialogos dialogo = new Dialogos();
+    Painel painel = new Painel();
+    EscPersonage pers = new EscPersonage();
     AcertoContas jogo = new AcertoContas(dialogo);
     Movimento tecla = new Movimento(posicaoX,posicaoY,velocidade,tileSize,worldWith,wordHeight,jogo);
     Player player = new Player(linScreen,colScreen,tileSize);
@@ -59,13 +54,11 @@ public class Mecanica extends JPanel{
         this.setBackground(Color.black);
         this.setDoubleBuffered(true);
         this.addKeyListener(tecla);
-        //this.addKeyListener(escolha);
         this.setFocusable(true);
     }
 
 
     public void inicioThread(){
-        //System.out.println(inicio);
         mapTileNum = cenario.mapaas();
         tecla.setmapTileNum(mapTileNum);
         tile = cenario.mapa();
@@ -75,48 +68,22 @@ public class Mecanica extends JPanel{
         rodar();
     }
     public void rodar(){
-            double drawInterval = 1000000000/FPS;
-            double nextDrawTime = System.nanoTime() + drawInterval;
+        double drawInterval = 1000000000/FPS;
+        double nextDrawTime = System.nanoTime() + drawInterval;
 
-            while(thread_jogo != null){
-                
-            
-                //update();
-                
-                repaint();
-               
-                
-                try {
-                    double remainingTime = nextDrawTime - System.nanoTime();
-                    remainingTime = remainingTime/1000000;
-                    if(remainingTime < 0){
-                        remainingTime = 0;
-                    }
-                    remainingTime = 20;
-                    Thread.sleep((long) remainingTime);
-                    nextDrawTime += drawInterval;
-                    
-                } catch (InterruptedException e) {
-                    e.printStackTrace();
-                }
-            //UPDATE: posição do personagem
+        while(thread_jogo != null){    
 
-            //DRAW: desenhar a cena com a informação atualizada
+            repaint();
+            temp.tempo(nextDrawTime, drawInterval); 
         }
 
     }
 
-    public void update(){
-       // player.update();
-    }
-    //Graphics contem muitas funções para desenhar objetos na cena
-    // metodo para atualizar tela 
     @Override
     public void paintComponent(Graphics g){
         super.paintComponent(g);
         Graphics2D g2 = (Graphics2D)g;
         inicio = tecla.getc();
-        //System.out.println(inicio);
         if(inicio){
             
             painel.draw(g2,colScreen,tileSize);
@@ -124,23 +91,13 @@ public class Mecanica extends JPanel{
             g2.drawString(">", 600, tecla.setposicao());
         
         }else{
-            escolha = tecla.setescolha();
+            personagem = tecla.setepersonagem();
             g2.clearRect(0, 0, linScreen, colScreen);
             cenario.draw(g2);
-            player.draw(g2,pers.teste(escolha));
+            player.draw(g2,personagem);
             dialogo.caixaDialogos(g2, tileSize,colScreen);
-            
+            dialogo.escrever(personagem.apresentacao()+"\n"+ personagem.atributo());
         }
-
-        
-        
-        //g2.setColor(Color.BLUE);
-        //g2.fillRect(tecla.getPosicaoX(), tecla.getPosicaoY(), 48, 48);
-        //g2.dispose();
-
     }
-
-
-
 }
 
