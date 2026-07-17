@@ -1,21 +1,20 @@
 package com.melhorJogoDaHistoria.entity;
 
 import com.melhorJogoDaHistoria.engine.Dados;
+import com.melhorJogoDaHistoria.engine.SaidaDeTexto;
 import com.melhorJogoDaHistoria.engine.Tempo;
-import com.melhorJogoDaHistoria.view.Dialogos;
 
 public class AcertoContas {
     Tempo time = new Tempo();
     Entity monstro = new Monstro();
     Dados dado = new Dados();
-    Dialogos dialogo;
+    SaidaDeTexto saidaDeTexto;
     String [] texto = new String[15];
     int tileSize;
     int tempo = 4000;
-    public AcertoContas(Dialogos dialogo){
-        this.dialogo = dialogo;
+    public AcertoContas(SaidaDeTexto saidaDeTexto){
+        this.saidaDeTexto = saidaDeTexto;
     }
-
     
   
     public void  encontro_monstro(Entity personagem){

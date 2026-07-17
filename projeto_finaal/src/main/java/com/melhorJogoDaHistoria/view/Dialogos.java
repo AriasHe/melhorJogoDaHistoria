@@ -5,9 +5,11 @@ import java.awt.Color;
 import java.awt.Font;
 import java.awt.Graphics2D;
 import java.io.InputStream;
-//import java.awt.InputStream;
 
-public class Dialogos {
+import com.melhorJogoDaHistoria.engine.SaidaDeTexto;
+
+
+public class Dialogos implements SaidaDeTexto {
     Graphics2D g2;
     int tileSize,x,X,Y;
     Font fonte;
@@ -30,6 +32,8 @@ public class Dialogos {
         g2.setStroke(new BasicStroke(5));
         g2.drawRoundRect(x+5, (8*x)+5 - 20, colScreen - 2*x -10, 4*x - 10, 25, 25);    
     }
+
+    @Override
     public void escrever(String texto){
         X=0;
         Y=420;
